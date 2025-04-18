@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import clsx from "clsx";
 
 const images = [
   "img1.jpg",
@@ -25,11 +24,17 @@ export default function Galerie() {
             className="w-full h-full object-cover rounded-md"
           />
         </div>
-        <div className="flex md:flex-col space-x-4 md:space-x-0 md:space-y-4 mt-4 md:mt-0 md:ml-4 overflow-x-auto md:overflow-x-visible">
-            {images.map((item, index)=> (
-                <img src={item} key={index} className={`w-full h-16 object-cover rounded-md cursor-pointer transition-all duration-300
-                     ${selectedImage === item && "ring-2 ring-yellow-500"}`} onClick={()=> setSelectedImage(item)} />
-            ))}
+        <div className="flex md:flex-col space-x-4 md:space-x-0 md:space-y-4 mt-4 md:mt-0 md:ml-4 overflow-hidden md:overflow-visible">
+          {images.map((item, index) => (
+            <img
+              src={item}
+              key={index}
+              className={`w-full h-16 object-cover rounded-md cursor-pointer transition-all duration-300 ${
+                selectedImage === item ? "ring-2 ring-yellow-500" : ""
+              }`}
+              onClick={() => setSelectedImage(item)}
+            />
+          ))}
         </div>
       </div>
     </div>
