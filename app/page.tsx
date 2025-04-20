@@ -16,6 +16,7 @@ export default function Home() {
       hasPool={true}
       hasKitchen={true}
     />
+    <Resevations/>
       
    
    </>
