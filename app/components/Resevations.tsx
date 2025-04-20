@@ -40,7 +40,7 @@ export default function Resevations() {
   };
 
   return (
-    <div className="max-w-[1200px] mx-auto p-6 bg-white rounded-xl spac-y-8">
+    <div className="max-w-[1200px] mx-auto p-6 my-6 bg-white rounded-xl spac-y-8">
       <h2 className="text-3xl font-bold text-gray-800">Réserver vote séjour</h2>
       <div className="spacey-4">
         <div className="flex items-center space-x-3">
@@ -75,11 +75,30 @@ export default function Resevations() {
         </div>
       </div>
       {totalNights > 0 && (
-        <div className="p-4 bg-blue-500 border-l-4 vorder-blue-400 text-blue-700 rouded-lg">
+        <div className="p-4 my-4 bg-gray-200 border-l-4 vorder-blue-400 text-blue-700 rouded-lg">
           <p className="text-lg font-semibold">{`Nombre de nuits: ${totalNights}`}</p>
           <p className="text-lg font-semibold">{`Prix Total: ${totalPrice} €`}</p>
         </div>
       )}
+
+      <Button onClick={handleReservation} disabled={!startDate || !endDate || isSubmitted}
+      className="w-full bg-yellow-500 hover:bg-yellow-600 text-white py-3 my-3 rounded-lg">
+        {isSubmitted ? (
+            <div className="flex items-center justify-center space-x-2">
+                <Calendar1 className="w-5 h-5 text-green-400"/>
+                <span>Réservation Confirmée</span>
+            </div>
+        ): (
+            "Réserver"
+        )}
+      </Button>
+
+        {isSubmitted && (
+            <p className="mt-4 text-center text-green-600 font-medium">
+                Votre réservation est confirmée
+            </p>
+        )}
+
     </div>
   );
 }
